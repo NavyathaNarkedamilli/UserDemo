@@ -1,0 +1,33 @@
+
+
+
+
+.maindiv{
+    height:500px;
+    width:500px;
+    font-size: 16px;
+    margin:100px;
+
+}
+
+.formContainer{
+
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 20px;
+   
+}
+
+
+.requiredMessage
+{font:"16px";
+color:"blue";
+}
+
+
+.buttonstyle{
+    width:100px;
+    font:16px;
+    margin:10px;
+}
