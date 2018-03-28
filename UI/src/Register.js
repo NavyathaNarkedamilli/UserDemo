@@ -14,7 +14,7 @@ export default class Register extends Component {
             requiredFields: false,
             responseSuccess: false
         }
-
+        this.back = this.back.bind(this);
     }
     firstNameOnChange = (e) => {
         console.log(e.target.value);
@@ -46,7 +46,9 @@ export default class Register extends Component {
             requiredFields: false
         })
     }
-
+    back() {
+        this.props.handleLoginBack();
+    }
     register = () => {
         debugger;
         if (this.state.firstName && this.state.lastName && this.state.email && this.state.password) {
@@ -62,7 +64,7 @@ export default class Register extends Component {
                     if (response.status === 200) {
                         this.setState({
                             responseSuccess: true,
-                            requiredFields:false
+                            requiredFields: false
                         });
                     }
                 }
@@ -77,7 +79,7 @@ export default class Register extends Component {
     render() {
         return (
             <div> <div><h3 className="loginheader">User Registration Page</h3></div>
-                <div className="container">
+                <div className="">
                     <div className="row">
                         {this.state.requiredFields && <div className="alert alert-danger alertstyle"><strong>Please input all fields</strong></div>}
                         {this.state.responseSuccess && <div className="alert alert-success alertstyle"><strong>Inserted Successfully</strong></div>}
@@ -107,7 +109,9 @@ export default class Register extends Component {
                         <div className="col-md-3"><input type="password" name="password" onChange={this.passwordOnChange}></input></div>
                     </div>
                     <br />
-                    <div className="row"><div className="col-md-3"></div><div className="col-md-3"><button className="btn btn-primary" type="button" onClick={this.register}>Sign Up</button></div>
+                    <div className="row"><div className="col-md-3">
+                        <button className="btn btn-primary" type="button" onClick={this.back}>Back</button>
+                    </div><div className="col-md-3"><button className="btn btn-primary" type="button" onClick={this.register}>Sign Up</button></div>
                     </div>
                 </div>
 

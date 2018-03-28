@@ -8,8 +8,11 @@ export default class Home extends Component {
         super();
         this.state = {
             enableRegisterComponent: false,
+            enableLoginComponent: false,
+            homeComponent: true,
             message: true
         }
+        this.handleLoginBack = this.handleLoginBack.bind(this);
 
     }
 
@@ -17,7 +20,17 @@ export default class Home extends Component {
         this.setState({
             enableRegisterComponent: true,
             enableLoginComponent: false,
+            homeComponent: false,
             message: false
+        })
+    }
+
+    handleLoginBack() {
+        this.setState({
+            enableRegisterComponent: false,
+            enableLoginComponent: false,
+            homeComponent: true,
+            message: true
         })
     }
 
@@ -25,6 +38,7 @@ export default class Home extends Component {
         this.setState({
             enableLoginComponent: true,
             enableRegisterComponent: false,
+            homeComponent: false,
             message: false
         })
     }
@@ -34,7 +48,7 @@ export default class Home extends Component {
                 <div className="row logindiv">
                     {this.state.message && <div className="row">
                         <div className="col-md-8">  <h3 className="loginheader">Welcome to HomePage</h3></div></div>}
-                    {!this.state.enableRegisterComponent && !this.state.enableLoginComponent ?
+                    {this.state.homeComponent &&
                         <div className="row">
                             <div>
                                 <div className="col-md-4">
@@ -43,10 +57,10 @@ export default class Home extends Component {
                             </div>
                             <div className="col-md-4"><input type="submit" value="Click here to Register" className="btn btn-primary btn-circle" onClick={this.renderRegister.bind(this)}></input>
                             </div>
-                        </div> : ""}
+                        </div>}
 
-                    {this.state.enableRegisterComponent && <Register />}
-                    {this.state.enableLoginComponent && <Login />}
+                    {this.state.enableRegisterComponent && <Register handleLoginBack={this.handleLoginBack} />}
+                    {this.state.enableLoginComponent && <Login handleLoginBack={this.handleLoginBack} />}
                 </div>
             </div>
         )

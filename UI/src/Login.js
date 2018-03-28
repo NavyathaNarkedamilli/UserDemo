@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Homepage from './Home';
 
 export default class Login extends Component {
     constructor() {
@@ -10,15 +11,16 @@ export default class Login extends Component {
             loginfailure: false,
             userName: this.getUserName(),
             password: this.getPassword(),
-            rememberMe: false
+            rememberMe: false,
+            enableHomePage: false
         }
         this.getUserName = this.getUserName.bind(this);
         this.getPassword = this.getPassword.bind(this);
         this.handleRememberMe = this.handleRememberMe.bind(this);
+        this.back = this.back.bind(this);
     }
 
     getUserName() {
-        debugger;
         let userName = localStorage.getItem("userName");
         return userName || "";
     }
@@ -43,12 +45,14 @@ export default class Login extends Component {
     }
 
     handleRememberMe() {
-        debugger;
         this.setState({
             rememberMe: !this.state.rememberMe
         })
     }
 
+    back() {
+        this.props.handleLoginBack();
+    }
 
     login = (e) => {
         if (this.state.rememberMe) {
@@ -88,8 +92,8 @@ export default class Login extends Component {
     }
     render() {
         return (
-            <div><h3 className="loginheader">Login Page</h3>
-                <div className="container">
+            <div> {!this.state.enableHomePage && <div><h3 className="loginheader">Login Page</h3>
+                <div className="">
 
                     <div className="row">
                         {this.state.loginsuccess && <div className="alert alert-success alertstyle"><strong>Welcome,{this.state.firstName} {this.state.lastName}</strong></div>}
@@ -110,9 +114,11 @@ export default class Login extends Component {
                     </div>
                     <br />
                     <br />
-                    <div className="row"> <div className="col-md-2"></div><div className="col-md-3 ">
-                        <button type="button" className="btn btn-primary" onClick={this.login}>Login</button>
-                    </div>
+                    <div className="row"> <div className="col-md-2">
+                        <button type="button" className="btn btn-primary" onClick={this.back}>Back</button>
+                    </div><div className="col-md-4">
+                            <button type="button" className="btn btn-primary" onClick={this.login}>Login</button>
+                        </div>
                     </div>
                     <br />
                     <div className="row fontstyle"><div className="col-md-2"></div><div className="col-md-3">
@@ -120,7 +126,11 @@ export default class Login extends Component {
                 </div>
                     </div>
                 </div>
+
+            </div>}
+                {this.state.enableHomePage && <Homepage />}
             </div>
+
         )
     }
 
