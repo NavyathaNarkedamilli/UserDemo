@@ -80,21 +80,46 @@ export default class Login extends Component {
             });
 
         }
-        else{
+        else {
             this.setState({
-                loginfailure:true
+                loginfailure: true
             })
         }
     }
     render() {
         return (
-            <div className="formContainer">
-                {this.state.loginsuccess && <div style={{ font: "14px",color:"blue" }}>Welcome,{this.state.firstName} {this.state.lastName}</div>}
-                {this.state.loginfailure && <div style={{ font: "14px",color:"red" }}>User Name or Password Incorrect</div>}
-                <span style={{ padding: "10px" }}>User Name:</span><input value={this.state.userName} type="text" name="firstName" onChange={this.userNameOnChange}></input>
-                <span style={{ padding: "10px" }}>Password:</span><input value={this.state.password} type="password" name="lastName" onChange={this.passwordOnchange}></input>
-                <div style={{ marginTop: "20px" }}><button type="button" onClick={this.login}>Login</button></div><br />
-                <div><input type="checkbox" onChange={this.handleRememberMe} unchecked></input>Remember Me</div>
+            <div><h3 className="loginheader">Login Page</h3>
+                <div className="container">
+
+                    <div className="row">
+                        {this.state.loginsuccess && <div className="alert alert-success alertstyle"><strong>Welcome,{this.state.firstName} {this.state.lastName}</strong></div>}
+                        {this.state.loginfailure && <div className="alert alert-danger alertstyle"><strong>User Name or Password Incorrect</strong></div>}
+                    </div>
+                    <div className="row fontstyle">
+                        <div className="col-md-2">User Name:</div>
+                        <div className="col-md-2">
+                            <input value={this.state.userName} type="text" name="firstName" onChange={this.userNameOnChange}></input>
+                        </div>
+                    </div>
+                    <br />
+                    <div className="row fontstyle">
+                        <div className="col-md-2">Password:</div>
+                        <div className="col-md-2">
+                            <input value={this.state.password} type="password" name="lastName" onChange={this.passwordOnchange}></input>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div className="row"> <div className="col-md-2"></div><div className="col-md-3 ">
+                        <button type="button" className="btn btn-primary" onClick={this.login}>Login</button>
+                    </div>
+                    </div>
+                    <br />
+                    <div className="row fontstyle"><div className="col-md-2"></div><div className="col-md-3">
+                        <input type="checkbox" onChange={this.handleRememberMe} unchecked></input>Remember Me
+                </div>
+                    </div>
+                </div>
             </div>
         )
     }

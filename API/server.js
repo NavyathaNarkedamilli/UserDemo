@@ -32,10 +32,10 @@ router.post('/register', function (req, res) {
     dbconnection.collection("userdetails").insertOne(req.body
         , function (err, result) {
             if (err) {
-                res.status(500).send("internal server error");
+                res.status(500).send("Internal server error");
             }
             else {
-                res.status(200).send("inserted successfully");
+                res.status(200).send("Inserted successfully");
             }
         });
 });
