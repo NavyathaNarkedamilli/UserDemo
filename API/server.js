@@ -29,7 +29,7 @@ app.use('/', router);
 
 
 router.post('/register', function (req, res) {
-    dbconnection.collection("userdetails").insertOne(req.body
+    dbconnection.collection("userdetails db").insertOne(req.body
         , function (err, result) {
             if (err) {
                 res.status(500).send("Internal server error");
