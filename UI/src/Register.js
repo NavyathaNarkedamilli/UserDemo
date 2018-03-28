@@ -78,11 +78,11 @@ export default class Register extends Component {
     }
     render() {
         return (
-            <div> <div><h3 className="loginheader">User Registration Page</h3></div>
+            <div> <div><h3 className="loginheader">Register User</h3></div>
                 <div className="">
                     <div className="row">
-                        {this.state.requiredFields && <div className="alert alert-danger alertstyle"><strong>Please input all fields</strong></div>}
-                        {this.state.responseSuccess && <div className="alert alert-success alertstyle"><strong>Inserted Successfully</strong></div>}
+                        {this.state.requiredFields && <div className="alert alert-danger alertstyle"><strong>Please Input All Fields</strong></div>}
+                        {this.state.responseSuccess && <div className="alert alert-success alertstyle"><strong>User Registered Sucessfully</strong></div>}
                     </div>
                     <div className="row fontstyle">
                         <div className="col-md-3">FirstName:</div>

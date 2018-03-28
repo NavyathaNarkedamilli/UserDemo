@@ -47,7 +47,7 @@ export default class Home extends Component {
             <div className="container">
                 <div className="row logindiv">
                     {this.state.message && <div className="row">
-                        <div className="col-md-8">  <h3 className="loginheader">Welcome to HomePage</h3></div></div>}
+                        <div className="col-md-8">  <h3 className="loginheader">Welcome..</h3></div></div>}
                     {this.state.homeComponent &&
                         <div className="row">
                             <div>
